@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poll App</title>
-    <style>
+        <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -57,14 +57,20 @@
     </style>
 </head>
 <body>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
+    
     <div id="poll-container">
-        <h2>Poll Question</h2>
-        <ul id="options-list">
-            <li><button class="option-btn">Option 1</button></li>
-            <li><button class="option-btn">Option 2</button></li>
-            <!-- Add more options as needed -->
-        </ul>
-        <button id="submit-btn">Submit</button>
-    </div>
+    <h2>Poll Question</h2>
+    <ul id="options-list">
+        <li><button class="option-btn" data-option="option1">Option 1</button></li>
+        <li><button class="option-btn" data-option="option2">Option 2</button></li>
+        <!-- Add more options as needed -->
+    </ul>
+</div>
+    <script src="script.js"></script>
 </body>
 </html>
