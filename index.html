@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poll App</title>
-        <style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -39,38 +39,23 @@
         .option-btn:hover {
             background-color: #e0e0e0;
         }
-        #submit-btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        #submit-btn:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
 
-<!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
     
     <div id="poll-container">
-    <h2>Poll Question</h2>
-    <ul id="options-list">
-        <li><button class="option-btn" data-option="option1">Option 1</button></li>
-        <li><button class="option-btn" data-option="option2">Option 2</button></li>
-        <!-- Add more options as needed -->
-    </ul>
-</div>
+        <h2>Poll Question</h2>
+        <ul id="options-list">
+            <li><button class="option-btn" data-option="option1">Option 1</button></li>
+            <li><button class="option-btn" data-option="option2">Option 2</button></li>
+            <!-- Add more options as needed -->
+        </ul>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
