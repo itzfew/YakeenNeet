@@ -3,15 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polling Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Poll App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #poll-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        #poll-container h2 {
+            margin-top: 0;
+        }
+        #options-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .option-btn:hover {
+            background-color: #e0e0e0;
+        }
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div id="polls-container"></div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="app.js"></script>
+    <div id="poll-container">
+        <h2>Poll Question</h2>
+        <ul id="options-list">
+            <li><button class="option-btn">Option 1</button></li>
+            <li><button class="option-btn">Option 2</button></li>
+            <!-- Add more options as needed -->
+        </ul>
+        <button id="submit-btn">Submit</button>
+    </div>
 </body>
 </html>
