@@ -1,0 +1,20 @@
+// Fetch polls from Firestore
+const pollsContainer = document.getElementById('polls-container');
+
+db.collection('polls').get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const poll = doc.data();
+            pollsContainer.innerHTML += `
+                <div class="poll">
+                    <h2>${poll.question}</h2>
+                    <ul>
+                        ${poll.options.map(option => `<li>${option}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting polls: ", error);
+    });
