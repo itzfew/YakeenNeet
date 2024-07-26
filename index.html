@@ -3,59 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poll App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        #poll-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        #poll-container h2 {
-            margin-top: 0;
-        }
-        #options-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .option-btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .option-btn:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
+    <title>Google Sheets Data</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
-    
-    <div id="poll-container">
-        <h2>Poll Question</h2>
-        <ul id="options-list">
-            <li><button class="option-btn" data-option="option1">Option 1</button></li>
-            <li><button class="option-btn" data-option="option2">Option 2</button></li>
-            <!-- Add more options as needed -->
-        </ul>
-    </div>
+    <h1>Data from Google Sheets</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
     <script src="script.js"></script>
 </body>
 </html>
