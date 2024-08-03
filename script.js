@@ -1,4 +1,4 @@
-// Handle slide menu
+ // Handle slide menu
 function openMenu() {
     document.querySelector('.slide-menu').style.left = '0';
 }
