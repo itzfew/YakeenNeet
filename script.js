@@ -22,7 +22,7 @@ const database = getDatabase(app);
 // Reference to the posts in Firebase
 const postsRef = ref(database, 'posts/');
 
-// Create a new post
+// Function to create a new post
 function createPost() {
     const postContent = document.getElementById('postContent').value;
     if (postContent.trim() === '') {
@@ -30,7 +30,6 @@ function createPost() {
         return;
     }
 
-    // Create a new post with a unique key
     const newPostRef = ref(database, 'posts/' + Date.now());
     set(newPostRef, {
         content: postContent
@@ -41,14 +40,14 @@ function createPost() {
     });
 }
 
-// Delete a post
+// Function to delete a post
 function deletePost(postId) {
     remove(ref(database, 'posts/' + postId)).catch((error) => {
         console.error('Error deleting post: ', error);
     });
 }
 
-// Display posts
+// Function to display posts
 function displayPosts() {
     onValue(postsRef, (snapshot) => {
         const posts = snapshot.val();
@@ -69,6 +68,9 @@ function displayPosts() {
         }
     });
 }
+
+// Add event listener to the Post button
+document.getElementById('postButton').addEventListener('click', createPost);
 
 // Load posts on page load
 window.onload = displayPosts;
