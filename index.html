@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Sheets Data</title>
+    <title>Student Posts Community</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Data from Google Sheets</h1>
-    <table id="data-table">
-        <thead>
-            <!-- Table headers will be dynamically inserted here -->
-        </thead>
-        <tbody>
-            <!-- Data rows will be dynamically inserted here -->
-        </tbody>
-    </table>
+    <header>
+        <h1>Student Posts Community</h1>
+    </header>
+
+    <main>
+        <section id="postForm">
+            <h2>Create a Post</h2>
+            <textarea id="postContent" placeholder="Write your post here..."></textarea>
+            <button onclick="createPost()">Post</button>
+        </section>
+
+        <section id="postsList">
+            <h2>Posts</h2>
+            <div id="posts"></div>
+        </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
