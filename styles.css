@@ -1,11 +1,14 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
-    background-color: #333;
+    background-color: #004d99;
     color: #fff;
 }
 
@@ -14,6 +17,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    border-bottom: 3px solid #fff;
+}
+
+.top-menu .logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .top-menu ul {
@@ -30,18 +39,50 @@ header {
 .top-menu ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 18px;
 }
 
+.search-icon {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.search-box {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.search-box input {
+    width: 200px;
+    padding: 5px;
+}
+
+.search-box button {
+    padding: 5px 10px;
+    background-color: #004d99;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Slide Menu */
 .slide-menu {
     position: fixed;
     top: 0;
     left: -250px;
     width: 250px;
     height: 100%;
-    background-color: #444;
+    background-color: #333;
     color: #fff;
     transition: left 0.3s ease;
     padding: 20px;
+    overflow-y: auto;
 }
 
 .slide-menu ul {
@@ -66,17 +107,93 @@ header {
     cursor: pointer;
 }
 
+/* Main content */
 main {
     padding: 20px;
 }
 
 .section {
     margin-bottom: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-footer {
-    background-color: #333;
+.home, .store, .posts, .profile, .contact {
+    padding: 40px;
+}
+
+.store, .posts, .profile {
+    background-color: #f9f9f9;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact form label {
+    margin: 10px 0 5px;
+}
+
+.contact form input, .contact form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact form button {
+    background-color: #004d99;
     color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Testimonials */
+.testimonials {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.testimonial {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.testimonial:last-of-type {
+    border-bottom: none;
+}
+
+/* Footer */
+footer {
+    background-color: #004d99;
+    color: #fff;
+    padding: 20px;
     text-align: center;
-    padding: 10px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.footer-section {
+    width: 30%;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
 }
