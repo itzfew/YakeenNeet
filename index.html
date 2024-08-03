@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <section id="postForm">
             <h2>Create a Post</h2>
             <textarea id="postContent" placeholder="Write your post here..."></textarea>
-            <button onclick="createPost()">Post</button>
+            <button id="postButton">Post</button>
         </section>
 
         <section id="postsList">
@@ -24,6 +24,7 @@
         </section>
     </main>
 
+    <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js"></script>
