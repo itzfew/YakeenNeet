@@ -1,76 +1,69 @@
-// Import and configure Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyD54FxWUlPn03bxD0UnD0oxVcMkI9ovCeQ",
-  authDomain: "community-604af.firebaseapp.com",
-  projectId: "community-604af",
-  storageBucket: "community-604af.appspot.com",
-  messagingSenderId: "735063146170",
-  appId: "1:735063146170:web:725bce2c3c64afc0f30c83",
-  measurementId: "G-7YD8RLH33Q"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const database = getDatabase(app);
-
-// Reference to the posts in Firebase
-const postsRef = ref(database, 'posts/');
-
-// Function to create a new post
-function createPost() {
-    const postContent = document.getElementById('postContent').value;
-    if (postContent.trim() === '') {
-        alert('Post content cannot be empty.');
-        return;
-    }
-
-    const newPostRef = ref(database, 'posts/' + Date.now());
-    set(newPostRef, {
-        content: postContent
-    }).then(() => {
-        document.getElementById('postContent').value = ''; // Clear the textarea
-    }).catch((error) => {
-        console.error('Error adding post: ', error);
-    });
+// Handle slide menu
+function openMenu() {
+    document.querySelector('.slide-menu').style.left = '0';
 }
 
-// Function to delete a post
-function deletePost(postId) {
-    remove(ref(database, 'posts/' + postId)).catch((error) => {
-        console.error('Error deleting post: ', error);
-    });
+function closeMenu() {
+    document.querySelector('.slide-menu').style.left = '-250px';
 }
 
-// Function to display posts
-function displayPosts() {
-    onValue(postsRef, (snapshot) => {
-        const posts = snapshot.val();
-        const postsContainer = document.getElementById('posts');
-        postsContainer.innerHTML = '';
+// Dummy data and functions for store and posts
+const products = [
+    { id: 'product1', name: 'Product 1', price: '$10' },
+    // Add more products here
+];
 
-        if (posts) {
-            Object.keys(posts).forEach(postId => {
-                const post = posts[postId];
-                const postElement = document.createElement('div');
-                postElement.classList.add('post');
-                postElement.innerHTML = `
-                    <p>${post.content}</p>
-                    <button class="delete-btn" onclick="deletePost('${postId}')">Delete</button>
-                `;
-                postsContainer.appendChild(postElement);
-            });
-        }
-    });
+const posts = [
+    { title: 'Post 1', content: 'Content for post 1.' },
+    // Add more posts here
+];
+
+function renderProducts() {
+    const productList = document.getElementById('products');
+    productList.innerHTML = products.map(product => 
+        `<div>
+            <h3>${product.name}</h3>
+            <p>Price: ${product.price}</p>
+        </div>`
+    ).join('');
 }
 
-// Add event listener to the Post button
-document.getElementById('postButton').addEventListener('click', createPost);
+function renderPosts() {
+    const postList = document.getElementById('post-list');
+    postList.innerHTML = posts.map(post =>
+        `<div>
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+        </div>`
+    ).join('');
+}
 
-// Load posts on page load
-window.onload = displayPosts;
+function addToCart(productId) {
+    alert(`Added ${productId} to cart.`);
+    // Implement cart functionality
+}
+
+function buyNow(productId) {
+    alert(`Buying ${productId}.`);
+    // Implement buying functionality
+}
+
+function signOut() {
+    // Implement Google Sign-Out functionality
+}
+
+function onSignIn(googleUser) {
+    // Handle Google Sign-In
+    const profile = googleUser.getBasicProfile();
+    document.getElementById('profile-info').innerHTML = `
+        <h3>${profile.getName()}</h3>
+        <p>Email: ${profile.getEmail()}</p>
+        <img src="${profile.getImageUrl()}" alt="Profile Picture">
+    `;
+}
+
+// Initialize the page with products and posts
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    renderPosts();
+});
