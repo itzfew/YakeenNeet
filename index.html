@@ -1,127 +1,303 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ind Edu</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
-    <!-- Google API Library -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Likeable Book Store</title>
+    <style>
+        /* Reset and basic styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .book {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            clear: both;
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .category-list {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-list button {
+            margin: 5px;
+            padding: 8px 16px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-list button:hover {
+            background-color: #777;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 20px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+                margin-left: 10px;
+            }
+
+            nav ul li {
+                margin-right: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Top Menu -->
     <header>
-        <nav class="top-menu">
-            <div class="logo">Ind Edu</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#store">Store</a></li>
-                <li><a href="#posts">Posts</a></li>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#" class="search-icon" onclick="toggleSearch()">🔍</a></li>
-            </ul>
-        </nav>
-        <div id="search-box" class="search-box">
-            <input type="text" placeholder="Search...">
-            <button onclick="toggleSearch()">Close</button>
+        <div class="container">
+            <h1>Likeable Book Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#books">Books</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Slide Menu -->
-    <aside class="slide-menu">
-        <button class="close-btn" onclick="closeMenu()">×</button>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#store">Store</a></li>
-            <li><a href="#posts">Posts</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </aside>
+    <section id="home">
+        <div class="container">
+            <h2>Welcome to Likeable Book Store</h2>
+            <p>Explore our wide selection of books and find your next favorite read!</p>
+        </div>
+    </section>
 
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="section home">
-            <h1>Welcome to Ind Edu</h1>
-            <p>Your go-to source for the latest updates and products.</p>
-            <button onclick="openMenu()">☰</button>
-        </section>
-
-        <!-- Store Section -->
-        <section id="store" class="section store">
-            <h2>Store</h2>
-            <div id="products">
-                <!-- Product list will be dynamically inserted here -->
+    <section id="books">
+        <div class="container">
+            <h2>Our Featured Books</h2>
+            <div class="category-list">
+                <button onclick="filterBooks('all')">All Books</button>
+                <button onclick="filterBooks('fiction')">Fiction</button>
+                <button onclick="filterBooks('nonfiction')">Non-Fiction</button>
             </div>
-            <button onclick="viewCart()">View Cart</button>
-        </section>
-
-        <!-- Posts Section -->
-        <section id="posts" class="section posts">
-            <h2>Latest Posts</h2>
-            <div id="post-list">
-                <!-- Post list will be dynamically inserted here -->
-            </div>
-        </section>
-
-        <!-- Profile Section -->
-        <section id="profile" class="section profile">
-            <h2>Profile</h2>
-            <div id="profile-info">
-                <!-- User profile info will be dynamically inserted here -->
-            </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <button onclick="signOut()">Sign Out</button>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <h2>Contact</h2>
-            <p>Contact us at <a href="mailto:contact@indedu.com">contact@indedu.com</a></p>
-            <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="section testimonials">
-            <h2>Testimonials</h2>
-            <div class="testimonial">
-                <p>"Great service and excellent products!" - Alex</p>
-            </div>
-            <div class="testimonial">
-                <p>"I love the daily posts and updates." - Jamie</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>Ind Edu provides the latest updates and quality products tailored to your needs.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Contact us at <a href="mailto:contact@indedu.com">contact@indedu.com</a></p>
+            <div class="book-list" id="book-list">
+                <!-- Books will be dynamically added here -->
+                <div class="book" onclick="showBookDetail(1)">
+                    <h3>Book 1</h3>
+                    <p>by Author A</p>
+                    <p>$19.99</p>
+                </div>
+                <div class="book" onclick="showBookDetail(2)">
+                    <h3>Book 2</h3>
+                    <p>by Author B</p>
+                    <p>$24.99</p>
+                </div>
+                <!-- Add more books as needed -->
             </div>
         </div>
-        <p>&copy; 2024 Ind Edu. All rights reserved.</p>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are passionate about books and aim to provide the best reading experience to our customers.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="form-container">
+                <form id="contact-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+                    <button type="submit">Send</button>
+                </form>
+                <div id="form-status"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Likeable Book Store. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Sample data for books
+        const books = [
+            { id: 1, title: "Book 1", author: "Author A", category: "fiction", price: "$19.99", details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut eleifend nulla." },
+            { id: 2, title: "Book 2", author: "Author B", category: "nonfiction", price: "$24.99", details: "Vestibulum scelerisque, justo eu rutrum consequat, odio sem vehicula dolor." },
+            // Add more books as needed
+        ];
+
+        // Function to display books based on category
+        function displayBooks(category = 'all') {
+            const bookList = document.getElementById('book-list');
+            bookList.innerHTML = '';
+
+            books.filter(book => category === 'all' || book.category === category).forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.classList.add('book');
+                bookItem.onclick = () => showBookDetail(book.id);
+                bookItem.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p>by ${book.author}</p>
+                    <p>${book.price}</p>
+                `;
+                bookList.appendChild(bookItem);
+            });
+        }
+
+        // Filter books when a category button is clicked
+        function filterBooks(category) {
+            displayBooks(category);
+        }
+
+        // Function to show detailed book information
+        function showBookDetail(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (book) {
+                // Open a new page/tab for book details
+                const bookDetailUrl = `book_detail.html?id=${book.id}`;
+                window.open(bookDetailUrl, '_blank');
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Simulate form submission (can be replaced with actual AJAX call)
+            const formData = new FormData(this);
+            const formDataObj = Object.fromEntries(formData.entries());
+
+            // Simulate form processing delay (2 seconds)
+            setTimeout(() => {
+                const formStatus = document.getElementById('form-status');
+                formStatus.innerHTML = `<p>Message sent successfully!</p>`;
+                this.reset();
+                setTimeout(() => {
+                    formStatus.innerHTML = '';
+                }, 3000);
+            }, 2000);
+        });
+        
+        // Display all books by default when the page loads
+        window.onload = function () {
+            displayBooks();
+        };
+    </script>
 </body>
 </html>
