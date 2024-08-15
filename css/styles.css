@@ -151,3 +151,44 @@ footer ul li a {
     color: #fff;
     text-decoration: none;
 }
+/* Blog section styles */
+.blog-post {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.blog-post h2 {
+    font-size: 24px;
+}
+
+.blog-post .date {
+    font-size: 14px;
+    color: #888;
+}
+
+.blog-post p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.blog-post a.btn {
+    margin-top: 20px;
+}
+
+.blog article {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.blog article h3 {
+    font-size: 20px;
+}
+
+.blog article p {
+    font-size: 16px;
+}
+
