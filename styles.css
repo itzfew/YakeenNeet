@@ -200,4 +200,80 @@ form button:hover {
 
 footer {
     background: #333;
-   
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.dark-mode {
+    background: #222;
+    color: #ddd;
+}
+
+.dark-mode .card {
+    border-color: #555;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 30px);
+    }
+
+    .menu-btn, .settings-btn {
+        font-size: 20px;
+    }
+
+    #hero {
+        padding: 80px 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    .top-links {
+        font-size: 14px;
+    }
+
+    .settings-panel {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+
+    #hero {
+        padding: 60px 5px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .top-links {
+        font-size: 12px;
+    }
+
+    .settings-panel {
+        width: 100%;
+        bottom: 0;
+    }
+}
