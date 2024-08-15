@@ -1,192 +1,70 @@
+/* Global styles */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    transition: background 0.3s, color 0.3s, font-size 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
 header {
-    background: #333;
-    color: white;
-    padding: 10px;
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-.logo {
-    height: 50px;
+header .logo {
+    height: 40px;
 }
 
 .menu-btn, .settings-btn {
-    background: #444;
+    background: none;
     border: none;
     color: white;
     font-size: 24px;
     cursor: pointer;
 }
 
-.menu-btn {
-    margin-left: 10px;
-}
-
-.settings-btn {
-    margin-right: 10px;
-}
-
 .main-menu {
-    background: #444;
-    color: white;
     display: none;
     position: fixed;
-    top: 0;
+    top: 50px;
     left: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-    transform: translateX(-100%);
+    background: #fff;
+    color: #333;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
 }
 
 .main-menu.open {
     display: block;
-    transform: translateX(0);
 }
 
 .main-menu ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-}
-
-.main-menu li {
-    margin-bottom: 10px;
-}
-
-.main-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.close-btn {
-    background: #555;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-#hero {
-    background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero-content h1 {
-    font-size: 3em;
     margin: 0;
 }
 
-.hero-content p {
-    font-size: 1.5em;
-}
-
-.cta-btn {
-    background: #007bff;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background 0.3s;
-}
-
-.cta-btn:hover {
-    background: #0056b3;
-}
-
-.top-links {
-    background: #f4f4f4;
+.main-menu li {
     padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
 }
 
-.top-links a {
+.main-menu a {
+    text-decoration: none;
     color: #333;
-    text-decoration: none;
-    margin: 0 10px;
 }
 
-main {
-    padding: 20px;
-}
-
-.posts-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.post-summary {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    background: #fff;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.post-summary:hover {
-    background: #f9f9f9;
-    transform: translateY(-5px);
-}
-
-.post-summary h3 {
-    margin-top: 0;
-}
-
-.post-summary p {
-    margin-bottom: 10px;
-}
-
-.post-summary a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.post-summary a:hover {
-    text-decoration: underline;
-}
-
-#scrollToTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-#scrollToTopBtn:hover {
-    background: #0056b3;
+.settings-btn {
+    position: relative;
 }
 
 .settings-panel {
@@ -199,6 +77,121 @@ main {
     padding: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+}
+
+.settings-panel h3 {
+    margin-top: 0;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 100px 20px;
+    background: #f4f4f4;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+}
+
+#home {
+    padding: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.posts-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post-summary {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    width: calc(33.333% - 30px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.post-summary:hover {
+    background: #f9f9f9;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#paginationControls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#paginationControls button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#paginationControls button:hover {
+    background: #0056b3;
+}
+
+#newsletter {
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+#newsletter form {
+    display: flex;
+    gap: 10px;
+}
+
+#newsletter input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#newsletter button {
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#newsletter button:hover {
+    background: #0056b3;
+}
+
+#socialMedia {
+    padding: 20px;
+    text-align: center;
+}
+
+#socialMedia a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+#socialMedia a:hover {
+    text-decoration: underline;
 }
 
 footer {
@@ -244,39 +237,10 @@ footer a {
     .hero-content p {
         font-size: 1.2em;
     }
-
-    .top-links {
-        font-size: 14px;
-    }
-
-    .settings-panel {
-        width: 90%;
-    }
 }
 
 @media (max-width: 480px) {
     .post-summary {
         width: 100%;
-    }
-
-    #hero {
-        padding: 60px 5px;
-    }
-
-    .hero-content h1 {
-        font-size: 1.5em;
-    }
-
-    .hero-content p {
-        font-size: 1em;
-    }
-
-    .top-links {
-        font-size: 12px;
-    }
-
-    .settings-panel {
-        width: 100%;
-        bottom: 0;
     }
 }
