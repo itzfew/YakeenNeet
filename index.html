@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Website</title>
+    <meta name="description" content="Personal website with blog posts, dynamic content, and more.">
+    <meta name="keywords" content="personal, blog, website, posts">
+    <meta name="author" content="Your Name">
+    <title>Your Personal Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,68 +25,39 @@
         <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
     </header>
 
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Welcome to My Personal Website</h1>
-            <p>Explore my projects and read my latest posts.</p>
-            <a href="#posts" class="cta-btn">Read My Posts</a>
-        </div>
-    </section>
-
-    <div class="top-links">
-        <a href="#home">Home</a> | 
-        <a href="#about">About</a> | 
-        <a href="#projects">Projects</a> | 
-        <a href="#contact">Contact</a>
-    </div>
-
     <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Welcome to My Personal Website</h1>
+                <p>Your one-stop destination for updates, posts, and more!</p>
+            </div>
+        </section>
+
         <section id="home">
             <h2>Latest Posts</h2>
+            <input type="text" id="searchInput" placeholder="Search posts..." oninput="filterPosts()">
             <p id="currentDateTime"></p>
             <div id="postsList" class="posts-list">
                 <!-- Posts will be dynamically loaded here -->
             </div>
+            <div id="paginationControls"></div>
             <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top</button>
         </section>
-        
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Information about myself and my background.</p>
-        </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Project 1</h3>
-                    <p>Description of project 1.</p>
-                    <a href="#">Learn More</a>
-                </div>
-                <div class="card">
-                    <h3>Project 2</h3>
-                    <p>Description of project 2.</p>
-                    <a href="#">Learn More</a>
-                </div>
-                <!-- Add more cards as needed -->
-            </div>
-        </section>
-        
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Fill out the form below to get in touch with me.</p>
-            <form id="contactForm" action="#" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
+
+        <section id="newsletter">
+            <h2>Subscribe to my Newsletter</h2>
+            <form id="newsletterForm" onsubmit="subscribeNewsletter(event)">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                
-                <button type="submit">Send</button>
+                <button type="submit">Subscribe</button>
             </form>
+        </section>
+
+        <section id="socialMedia">
+            <h2>Follow me on social media</h2>
+            <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+            <a href="https://facebook.com/yourprofile" target="_blank">Facebook</a>
+            <a href="https://instagram.com/yourprofile" target="_blank">Instagram</a>
         </section>
     </main>
 
@@ -97,18 +71,13 @@
 
     <div id="settings" class="settings-panel">
         <h3>Settings</h3>
-        <label>
-            Dark Mode
-            <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
-        </label>
-        <label>
-            Font Size
-            <select id="fontSize" onchange="changeFontSize()">
-                <option value="16px">Default</option>
-                <option value="18px">Medium</option>
-                <option value="20px">Large</option>
-            </select>
-        </label>
+        <label for="fontSize">Font Size:</label>
+        <select id="fontSize" onchange="changeFontSize()">
+            <option value="16px">Normal</option>
+            <option value="18px">Large</option>
+            <option value="20px">Extra Large</option>
+        </select>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
 
     <script src="scripts.js"></script>
