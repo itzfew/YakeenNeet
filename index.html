@@ -3,83 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website with blog posts, dynamic content, and more.">
-    <meta name="keywords" content="personal, blog, website, posts">
-    <meta name="author" content="Your Name">
-    <title>Your Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo" class="logo">
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-        <nav id="mainMenu" class="main-menu">
-            <button class="close-btn" onclick="toggleMenu()">✖️</button>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <nav>
+            <div class="container">
+                <h1><a href="index.html">Your Name</a></h1>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </nav>
-        <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
     </header>
-
     <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Welcome to My Personal Website</h1>
-                <p>Your one-stop destination for updates, posts, and more!</p>
+        <section class="hero">
+            <div class="container">
+                <h2>Hello, I'm Your Name</h2>
+                <p>A [Your Profession/Skill] with a passion for creating impactful solutions.</p>
+                <a href="projects.html" class="btn">See My Work</a>
             </div>
         </section>
-
-        <section id="home">
-            <h2>Latest Posts</h2>
-            <input type="text" id="searchInput" placeholder="Search posts..." oninput="filterPosts()">
-            <p id="currentDateTime"></p>
-            <div id="postsList" class="posts-list">
-                <!-- Posts will be dynamically loaded here -->
+        <section class="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>Brief introduction about yourself and your background.</p>
+                <a href="about.html" class="btn">Learn More</a>
             </div>
-            <div id="paginationControls"></div>
-            <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top</button>
-        </section>
-
-        <section id="newsletter">
-            <h2>Subscribe to my Newsletter</h2>
-            <form id="newsletterForm" onsubmit="subscribeNewsletter(event)">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </section>
-
-        <section id="socialMedia">
-            <h2>Follow me on social media</h2>
-            <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
-            <a href="https://facebook.com/yourprofile" target="_blank">Facebook</a>
-            <a href="https://instagram.com/yourprofile" target="_blank">Instagram</a>
         </section>
     </main>
-
     <footer>
-        <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Support</a></li>
-        </ul>
+        <div class="container">
+            <p>&copy; 2024 Your Name</p>
+            <ul>
+                <li><a href="https://twitter.com/yourusername">Twitter</a></li>
+                <li><a href="https://linkedin.com/in/yourusername">LinkedIn</a></li>
+                <li><a href="https://github.com/yourusername">GitHub</a></li>
+            </ul>
+        </div>
     </footer>
-
-    <div id="settings" class="settings-panel">
-        <h3>Settings</h3>
-        <label for="fontSize">Font Size:</label>
-        <select id="fontSize" onchange="changeFontSize()">
-            <option value="16px">Normal</option>
-            <option value="18px">Large</option>
-            <option value="20px">Extra Large</option>
-        </select>
-        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    </div>
-
-    <script src="scripts.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
