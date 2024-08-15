@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <img src="logo.png" alt="Logo" class="logo">
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <nav id="mainMenu" class="main-menu">
             <button class="close-btn" onclick="toggleMenu()">✖️</button>
@@ -24,8 +25,8 @@
     <section id="hero">
         <div class="hero-content">
             <h1>Welcome to My Personal Website</h1>
-            <p>Explore my projects and learn more about me.</p>
-            <a href="#projects" class="cta-btn">See My Work</a>
+            <p>Explore my projects and read my latest posts.</p>
+            <a href="#posts" class="cta-btn">Read My Posts</a>
         </div>
     </section>
 
@@ -35,10 +36,15 @@
         <a href="#projects">Projects</a> | 
         <a href="#contact">Contact</a>
     </div>
+
     <main>
         <section id="home">
-            <h2>Welcome</h2>
-            <p>This is a brief introduction about the website and its purpose.</p>
+            <h2>Latest Posts</h2>
+            <p id="currentDateTime"></p>
+            <div id="postsList" class="posts-list">
+                <!-- Posts will be dynamically loaded here -->
+            </div>
+            <button id="scrollToTopBtn" onclick="scrollToTop()">↑ Back to Top</button>
         </section>
         
         <section id="about">
