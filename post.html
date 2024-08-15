@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
+    <meta name="description" content="Read detailed blog posts.">
+    <meta name="keywords" content="blog, post, details">
+    <meta name="author" content="Your Name">
+    <title>Post Details</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="loadPost()">
     <header>
         <img src="logo.png" alt="Logo" class="logo">
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <nav id="mainMenu" class="main-menu">
             <button class="close-btn" onclick="toggleMenu()">✖️</button>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
         <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
@@ -25,6 +28,18 @@
     <main>
         <section id="postContent">
             <!-- Post content will be dynamically loaded here -->
+        </section>
+
+        <section id="comments">
+            <h3>Comments</h3>
+            <div id="commentsList">
+                <!-- Comments will be dynamically loaded here -->
+            </div>
+            <form id="commentForm" onsubmit="submitComment(event)">
+                <label for="comment">Leave a comment:</label>
+                <textarea id="comment" name="comment" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </section>
     </main>
 
@@ -36,35 +51,17 @@
         </ul>
     </footer>
 
+    <div id="settings" class="settings-panel">
+        <h3>Settings</h3>
+        <label for="fontSize">Font Size:</label>
+        <select id="fontSize" onchange="changeFontSize()">
+            <option value="16px">Normal</option>
+            <option value="18px">Large</option>
+            <option value="20px">Extra Large</option>
+        </select>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
     <script src="scripts.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            loadPost();
-        });
-
-        function loadPost() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const postId = urlParams.get('id');
-
-            const posts = [
-                { id: 1, title: 'First Post', content: 'Full content of the first post.', date: '2024-08-15' },
-                { id: 2, title: 'Second Post', content: 'Full content of the second post.', date: '2024-08-14' },
-                // Add more posts here
-            ];
-
-            const post = posts.find(p => p.id == postId);
-
-            if (post) {
-                document.getElementById('postContent').innerHTML = `
-                    <h1>${post.title}</h1>
-                    <p><small>${post.date}</small></p>
-                    <p>${post.content}</p>
-                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20post:%20${encodeURIComponent(window.location.href)}" target="_blank">Share this post</a>
-                `;
-            } else {
-                document.getElementById('postContent').innerHTML = '<p>Post not found.</p>';
-            }
-        }
-    </script>
 </body>
 </html>
