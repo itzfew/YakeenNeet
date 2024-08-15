@@ -10,6 +10,13 @@ header {
     color: white;
     padding: 10px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 50px;
 }
 
 .menu-btn, .settings-btn {
@@ -18,16 +25,14 @@ header {
     color: white;
     font-size: 24px;
     cursor: pointer;
-    position: absolute;
-    top: 10px;
 }
 
 .menu-btn {
-    left: 10px;
+    margin-left: 10px;
 }
 
 .settings-btn {
-    right: 50px;
+    margin-right: 10px;
 }
 
 .main-menu {
@@ -130,59 +135,57 @@ main {
     padding: 20px;
 }
 
-.card-container {
+.posts-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 15px;
 }
 
-.card {
+.post-summary {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
-    width: calc(33% - 30px);
-    transition: background 0.3s, transform 0.3s;
     background: #fff;
+    transition: background 0.3s, transform 0.3s;
 }
 
-.card:hover {
+.post-summary:hover {
     background: #f9f9f9;
     transform: translateY(-5px);
 }
 
-.card h3 {
+.post-summary h3 {
     margin-top: 0;
 }
 
-form {
-    display: grid;
-    gap: 10px;
-    max-width: 600px;
-    margin: 0 auto;
+.post-summary p {
+    margin-bottom: 10px;
 }
 
-form label {
-    display: block;
+.post-summary a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.post-summary a:hover {
+    text-decoration: underline;
 }
 
-form button {
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     background: #007bff;
     color: white;
-    padding: 10px 20px;
     border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
 }
 
-form button:hover {
+#scrollToTopBtn:hover {
     background: #0056b3;
 }
 
@@ -217,12 +220,12 @@ footer a {
     color: #ddd;
 }
 
-.dark-mode .card {
+.dark-mode .post-summary {
     border-color: #555;
 }
 
 @media (max-width: 768px) {
-    .card {
+    .post-summary {
         width: calc(50% - 30px);
     }
 
@@ -252,7 +255,7 @@ footer a {
 }
 
 @media (max-width: 480px) {
-    .card {
+    .post-summary {
         width: 100%;
     }
 
