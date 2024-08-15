@@ -244,3 +244,13 @@ footer a {
         width: 100%;
     }
 }
+.comment {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+#postContent {
+    padding: 20px;
+}
