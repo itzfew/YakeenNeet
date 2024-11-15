@@ -3,274 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Web App with Sidebar</title>
-
-    <!-- Link to Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Name Share</title>
     <style>
-        /* General Body and Layout */
-        body {
-            font-family: 'Arial', sans-serif;
+        /* General reset */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #ecf0f1;
-            overflow-x: hidden; /* Prevent horizontal scroll */
         }
-
-        /* Top Navigation Bar */
-        .top-nav {
-            background-color: #34495e;
-            color: white;
-            padding: 15px 20px;
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-        }
-
-        .top-nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .top-nav .menu {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .top-nav .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .top-nav .menu a:hover {
-            color: #f39c12;
-        }
-
-        .top-nav .search-bar input {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 20px;
-            outline: none;
-        }
-
-        .top-nav .icon-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .top-nav .icon-btn:hover {
-            color: #f39c12;
-        }
-
-        /* Sidebar (Slide Menu) */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #2c3e50;
-            color: white;
-            overflow-x: hidden;
-            transition: 0.3s;
-            z-index: 99;
-            padding-top: 60px;
-        }
-
-        .side-menu a {
-            padding: 12px 16px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .side-menu a:hover {
-            background-color: #34495e;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 60px;
-            padding: 20px;
-            transition: margin-left 0.3s;
-            min-height: 100vh;
-        }
-
-        /* Bottom Navigation Bar */
-        .bottom-nav {
-            background-color: #34495e;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            z-index: 100;
-        }
-
-        .bottom-nav a {
-            color: white;
-            font-size: 24px;
+            height: 100vh;
             text-align: center;
-            width: 40px;
+        }
+
+        /* Header and title */
+        h1 {
+            font-size: 3rem;
+            color: #FF5733;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .wish-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 500px;
+            font-size: 1.25rem;
+            color: #444;
+        }
+
+        .wish {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-transform: capitalize;
+            margin-bottom: 20px;
+        }
+
+        .wish p {
+            font-size: 1.125rem;
+            margin-top: 10px;
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #FF5733;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.25rem;
+            background-color: #FF5733;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #C70039;
+        }
+
+        .share-link {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .share-link a {
+            color: #FF5733;
             text-decoration: none;
         }
 
-        /* Dropdown Menu for Settings */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #34495e;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #2c3e50;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .top-nav .menu {
-                display: none;
-            }
-
-            .top-nav .icon-btn {
-                display: block;
-            }
-
-            .side-menu a {
-                font-size: 16px;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
+        .share-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
-    <div class="top-nav">
-        <div class="logo">MyApp</div>
-        <div class="menu">
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search...">
-        </div>
-        <div class="icon-btns">
-            <button class="icon-btn" id="notificationBtn">
-                <i class="fas fa-bell"></i>
-            </button>
-            <button class="icon-btn" id="profileBtn">
-                <i class="fas fa-user-circle"></i>
-            </button>
-            <div class="dropdown">
-                <button class="icon-btn">
-                    <i class="fas fa-cogs"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Account Settings</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Logout</a>
-                </div>
-            </div>
-            <button class="icon-btn" id="toggleBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+    <h1>Welcome to Custom Name Share</h1>
+
+    <div class="wish-container">
+        <div class="wish" id="dynamic-name">
+            <p>Enter your name and click share to see a personalized message!</p>
         </div>
     </div>
 
-    <!-- Sidebar (Slide Menu) -->
-    <div class="side-menu" id="sideMenu">
-        <a href="#">Dashboard <i class="fas fa-tachometer-alt"></i></a>
-        <a href="#">Settings <i class="fas fa-cogs"></i></a>
-        <a href="#">Profile <i class="fas fa-user"></i></a>
-        <a href="#">Messages <i class="fas fa-comment-alt"></i></a>
-        <a href="#">Logout <i class="fas fa-sign-out-alt"></i></a>
+    <div class="input-section">
+        <input type="text" id="userName" placeholder="Enter your name" />
+        <button onclick="shareName()">Share</button>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
-        <h1>Welcome to My App</h1>
-        <p>This is a simple, modern, and responsive app interface with top and bottom navigation menus.</p>
-        <button onclick="toggleSideMenu()">Toggle Sidebar</button>
+    <div class="share-link" id="shareLinkContainer">
+        <!-- Shareable link will appear here -->
     </div>
 
-    <!-- Bottom Navigation Bar -->
-    <div class="bottom-nav">
-        <a href="#"><i class="fas fa-home"></i></a>
-        <a href="#"><i class="fas fa-search"></i></a>
-        <a href="#"><i class="fas fa-bell"></i></a>
-        <a href="#"><i class="fas fa-user"></i></a>
-    </div>
-
-    <!-- JavaScript for handling menus and transitions -->
     <script>
-        // Function to toggle the Sidebar (Slide Menu) without affecting the body content
-        function toggleSideMenu() {
-            const sideMenu = document.getElementById("sideMenu");
-            sideMenu.style.width = sideMenu.style.width === "250px" ? "0" : "250px"; // Toggle sidebar width
+        // Function to dynamically update the wish message based on entered name
+        function shareName() {
+            const userName = document.getElementById('userName').value.trim();
+            if (userName) {
+                // Update the displayed wish
+                document.getElementById('dynamic-name').innerHTML = `<span>Hello, ${userName}!</span><p>Wishing you a wonderful day!</p>`;
+
+                // Generate the shareable URL
+                const baseUrl = window.location.href.split('?')[0]; // Strip query params to keep base URL
+                const shareLink = `${baseUrl}?name=${encodeURIComponent(userName)}`;
+
+                // Show the generated share link
+                document.getElementById('shareLinkContainer').innerHTML = `
+                    <p>Share your link: <a href="${shareLink}" target="_blank">${shareLink}</a></p>
+                `;
+            } else {
+                alert("Please enter a valid name!");
+            }
         }
 
-        // Toggle the sidebar via the hamburger icon (mobile view)
-        const toggleBtn = document.getElementById("toggleBtn");
-        toggleBtn.addEventListener("click", function() {
-            const sideMenu = document.getElementById("sideMenu");
-            sideMenu.style.width = sideMenu.style.width === "250px" ? "0" : "250px"; // Toggle sidebar width
-        });
+        // Check for URL parameters and load the name if present
+        function loadNameFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            if (name) {
+                document.getElementById('dynamic-name').innerHTML = `<span>Hello, ${decodeURIComponent(name)}!</span><p>Wishing you a wonderful day!</p>`;
+            }
+        }
 
-        // Show notifications (this is a placeholder for a dropdown or notification feature)
-        const notificationBtn = document.getElementById("notificationBtn");
-        notificationBtn.addEventListener("click", function() {
-            alert("Notification clicked!");
-        });
-
-        // Profile button functionality
-        const profileBtn = document.getElementById("profileBtn");
-        profileBtn.addEventListener("click", function() {
-            alert("Profile clicked!");
-        });
+        // Initialize the page by loading name from URL if available
+        loadNameFromUrl();
     </script>
+
 </body>
 </html>
