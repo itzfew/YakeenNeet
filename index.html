@@ -141,9 +141,15 @@
                 const baseUrl = window.location.href.split('?')[0]; // Strip query params to keep base URL
                 const shareLink = `${baseUrl}?name=${encodeURIComponent(userName)}`;
 
-                // Show the generated share link
+                // Create the WhatsApp sharing link
+                const whatsappLink = `https://wa.me/?text=Check%20out%20this%20custom%20message%20for%20${encodeURIComponent(userName)}:%20${encodeURIComponent(shareLink)}`;
+
+                // Show the WhatsApp share button
                 document.getElementById('shareLinkContainer').innerHTML = `
-                    <p>Share your link: <a href="${shareLink}" target="_blank">${shareLink}</a></p>
+                    <p>Click to share on WhatsApp:</p>
+                    <a href="${whatsappLink}" target="_blank">
+                        <button>Share on WhatsApp</button>
+                    </a>
                 `;
             } else {
                 alert("Please enter a valid name!");
