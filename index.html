@@ -62,14 +62,13 @@
         <p id="decodedUrl"></p>
     </div>
     <script>
-        const urlMap = new Map();
+        const secretKey = 12345; // A simple secret key for XOR encryption
 
         function shortenUrl() {
             const originalUrl = document.getElementById('originalUrl').value;
             if (originalUrl) {
-                const hash = hashCode(originalUrl);
-                const encodedUrl = encodeBase62(hash).substring(0, 5);
-                urlMap.set(encodedUrl, originalUrl);
+                const encryptedUrl = encrypt(originalUrl, secretKey);
+                const encodedUrl = encodeBase62(encryptedUrl).substring(0, 5);
                 document.getElementById('shortenedUrl').innerText = `Shortened URL: ${encodedUrl}`;
             } else {
                 alert('Please enter a URL to shorten.');
@@ -79,35 +78,39 @@
         function decodeUrl() {
             const shortUrl = document.getElementById('shortUrl').value;
             if (shortUrl) {
-                const originalUrl = urlMap.get(shortUrl);
-                if (originalUrl) {
-                    document.getElementById('decodedUrl').innerText = `Original URL: ${originalUrl}`;
-                } else {
-                    alert('Shortened URL not found.');
+                try {
+                    const decodedUrl = decodeBase62(shortUrl);
+                    const decryptedUrl = decrypt(decodedUrl, secretKey);
+                    document.getElementById('decodedUrl').innerText = `Original URL: ${decryptedUrl}`;
+                } catch (e) {
+                    document.getElementById('decodedUrl').innerText = 'Invalid shortened URL.';
                 }
             } else {
                 alert('Please enter a shortened URL to decode.');
             }
         }
 
-        function hashCode(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                const char = str.charCodeAt(i);
-                hash = (hash << 5) - hash + char;
-                hash |= 0; // Convert to 32bit integer
-            }
-            return hash >>> 0; // Convert to unsigned 32bit integer
+        function encrypt(str, key) {
+            return Array.from(str).map(char => char.charCodeAt(0) ^ key).join('');
+        }
+
+        function decrypt(str, key) {
+            return Array.from(str).map(char => String.fromCharCode(char ^ key)).join('');
         }
 
         function encodeBase62(num) {
             const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             let str = '';
-            while (num > 0) {
-                str = chars[num % 62] + str;
-                num = Math.floor(num / 62);
+            while (num.length > 0) {
+                str = chars[parseInt(num.slice(0, 2), 10) % 62] + str;
+                num = num.slice(2);
             }
             return str;
+        }
+
+        function decodeBase62(str) {
+            const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            return str.split('').reverse().map(char => chars.indexOf(char).toString(10).padStart(2, '0')).join('');
         }
     </script>
 </body>
