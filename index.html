@@ -91,26 +91,22 @@
         }
 
         function encrypt(str, key) {
-            return Array.from(str).map(char => char.charCodeAt(0) ^ key).join('');
+            return Array.from(str).map(char => char.charCodeAt(0) ^ key).join('-');
         }
 
         function decrypt(str, key) {
-            return Array.from(str).map(char => String.fromCharCode(char ^ key)).join('');
+            return String.fromCharCode(...str.split('-').map(char => char ^ key));
         }
 
-        function encodeBase62(num) {
+        function encodeBase62(numStr) {
             const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            let str = '';
-            while (num.length > 0) {
-                str = chars[parseInt(num.slice(0, 2), 10) % 62] + str;
-                num = num.slice(2);
-            }
-            return str;
+            const numArr = numStr.split('-').map(Number);
+            return numArr.map(num => chars[num % 62]).join('');
         }
 
         function decodeBase62(str) {
             const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            return str.split('').reverse().map(char => chars.indexOf(char).toString(10).padStart(2, '0')).join('');
+            return str.split('').map(char => chars.indexOf(char).toString()).join('-');
         }
     </script>
 </body>
