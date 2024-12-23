@@ -1,199 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google" value="notranslate">
-  <meta property="og:title" content="Wishing You a Joyous Eid al-Fitr 2025" />
-  <meta property="og:description" content="Celebrate Eid al-Fitr with custom wishes and greetings!" />
-  <meta property="og:url" content="https://yourwebsite.com" />
-  <meta property="og:site_name" content="Eid Greetings" />
-  <title>Eid Mubarak 2025 Countdown</title>
-  
-  <!-- Link to external Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Concert+One&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Global Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Background and general layout */
-    body {
-      background: linear-gradient(to right, #f7c4a3, #f3a6b4);
-      font-family: 'Concert One', sans-serif;
-      text-align: center;
-      color: #fff;
-    }
-
-    /* Countdown styling */
-    #demo {
-      font-size: 40px;
-      font-weight: bold;
-      color: #1e7523;
-      animation: glow 1s ease-in-out infinite;
-    }
-
-    /* Glowing effect for countdown */
-    @keyframes glow {
-      0%, 100% {
-        text-shadow: 0 0 20px #fff, 0 0 30px #ff007f;
-      }
-      50% {
-        text-shadow: 0 0 20px #ff007f, 0 0 30px #fff;
-      }
-    }
-
-    /* Heading Styles */
-    h1 {
-      font-size: 45px;
-      font-family: 'Indie Flower', cursive;
-      color: #f06414;
-      text-transform: uppercase;
-      margin-top: 20px;
-    }
-
-    h2 {
-      font-size: 30px;
-      color: #008000;
-      font-family: 'Indie Flower', cursive;
-      margin: 20px 0;
-    }
-
-    /* Input and Button Styles */
-    input[type="text"] {
-      width: 70%;
-      padding: 15px;
-      margin-top: 20px;
-      border: 2px solid #f06414;
-      border-radius: 5px;
-      font-size: 18px;
-    }
-
-    button {
-      padding: 12px 25px;
-      background-color: #34af23;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 15px;
-      font-size: 18px;
-    }
-
-    button:hover {
-      background-color: #28a745;
-    }
-
-    /* Share Button Styling */
-    #whatsappShareBtn {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 20px;
-      font-size: 18px;
-    }
-
-    #whatsappShareBtn:hover {
-      background-color: #128C7E;
-    }
-
-    /* Additional festive decorations */
-    .gif-container img {
-      width: 100%;
-      max-width: 80%;
-      margin-top: 20px;
-      border-radius: 8px;
-    }
-
-    .footerbtn {
-      position: fixed;
-      left: 10px;
-      bottom: 10px;
-      padding: 10px;
-      background-color: #ff007f;
-      color: white;
-      border-radius: 20px;
-      font-size: 18px;
-      text-decoration: none;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-xxxxxxxxxxxxxxxx",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- End Google AdSense -->
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 </head>
-
 <body>
-  <div class="main-container">
-    <h1>🌙 Eid Mubarak 2025 🌙</h1>
-
-    <h2>Countdown to Eid al-Fitr 2025</h2>
-    <div id="demo"></div>
-
-    <div class="gif-container">
-      <img src="https://1.bp.blogspot.com/-dDi7Vb0FJ8E/WxT-MzwjzEI/AAAAAAAAAX4/wurTMd1nFmcuUAPQOoKMYlI1G-_nhrR8QCLcBGAs/s1600/flag.png" alt="Eid Mubarak Gif">
-    </div>
-
-    <div class="greeting-section">
-      <h3>Enter Your Name to Send a Personalized Eid Greeting:</h3>
-      <input type="text" id="userName" placeholder="Your Name" />
-      <button onclick="generateLink()">Generate Shareable Link</button>
-
-      <p id="generatedLink"></p>
-
-      <a id="whatsappShareBtn" href="https://wa.me/?text=" target="_blank">Share on WhatsApp</a>
-    </div>
-
-    <br><br>
-
-    <a href="https://yourwebsite.com" class="footerbtn">Visit Our Site for More Greetings</a>
-
-  </div>
-
-  <script>
-    // Countdown to Eid al-Fitr 2025
-    var countDownDate = new Date("Apr 21, 2025 00:00:00").getTime();
-    var x = setInterval(function() {
-      var now = new Date().getTime();
-      var distance = countDownDate - now;
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("demo").innerHTML = days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds ";
-
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "Eid Mubarak!";
-      }
-    }, 1000);
-
-    // Generate the link to share on WhatsApp
-    function generateLink() {
-      const name = document.getElementById("userName").value;
-      if (name) {
-        const encodedName = encodeURIComponent(name);
-        const shareableLink = `${window.location.href.split('?')[0]}?name=${encodedName}`;
-        document.getElementById("generatedLink").innerHTML = `Share this link: <a href="${shareableLink}" target="_blank">${shareableLink}</a>`;
-
-        // Update WhatsApp share button with the generated message and link
-        const whatsappText = `Eid Mubarak, ${name}! Check out my custom Eid greeting here: ${shareableLink}`;
-        document.getElementById("whatsappShareBtn").href = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
-      } else {
-        alert("Please enter your name!");
-      }
-    }
-  </script>
+    <header>
+        <h1>{{ site.title }}</h1>
+    </header>
+    <main>
+        {{ content }}
+    </main>
+    <footer>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </footer>
 </body>
 </html>
