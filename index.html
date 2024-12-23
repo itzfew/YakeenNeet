@@ -3,27 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-xxxxxxxxxxxxxxxx",
-            enable_page_level_ads: true
-        });
-    </script>
-    <!-- End Google AdSense -->
-    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin: 10px 0;
+            word-break: break-all;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>{{ site.title }}</h1>
-    </header>
-    <main>
-        {{ content }}
-    </main>
-    <footer>
-        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
-    </footer>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <input type="text" id="originalUrl" placeholder="Enter URL to shorten">
+        <button onclick="shortenUrl()">Shorten URL</button>
+        <p id="shortenedUrl"></p>
+        <br>
+        <input type="text" id="shortUrl" placeholder="Enter shortened URL to decode">
+        <button onclick="decodeUrl()">Decode URL</button>
+        <p id="decodedUrl"></p>
+    </div>
+    <script>
+        const urlMap = new Map();
+
+        function shortenUrl() {
+            const originalUrl = document.getElementById('originalUrl').value;
+            if (originalUrl) {
+                const hash = hashCode(originalUrl);
+                const encodedUrl = encodeBase62(hash).substring(0, 5);
+                urlMap.set(encodedUrl, originalUrl);
+                document.getElementById('shortenedUrl').innerText = `Shortened URL: ${encodedUrl}`;
+            } else {
+                alert('Please enter a URL to shorten.');
+            }
+        }
+
+        function decodeUrl() {
+            const shortUrl = document.getElementById('shortUrl').value;
+            if (shortUrl) {
+                const originalUrl = urlMap.get(shortUrl);
+                if (originalUrl) {
+                    document.getElementById('decodedUrl').innerText = `Original URL: ${originalUrl}`;
+                } else {
+                    alert('Shortened URL not found.');
+                }
+            } else {
+                alert('Please enter a shortened URL to decode.');
+            }
+        }
+
+        function hashCode(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = (hash << 5) - hash + char;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash >>> 0; // Convert to unsigned 32bit integer
+        }
+
+        function encodeBase62(num) {
+            const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let str = '';
+            while (num > 0) {
+                str = chars[num % 62] + str;
+                num = Math.floor(num / 62);
+            }
+            return str;
+        }
+    </script>
 </body>
 </html>
